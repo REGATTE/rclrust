@@ -8,3 +8,4 @@ Based on [RCL](https://github.com/ros2/rcl)
 
 Built for **FOXY** & **HUMBLE**.
 
+For anyone going through the code and looking for `main.rs`, there is no `main.rs` anywhere as the whole repository acts as a module for your main project, and not as a standalone project.

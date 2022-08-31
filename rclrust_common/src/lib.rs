@@ -1,4 +1,9 @@
+use std::collections::HashMap;
+use std::fs::{self, File};
+use std::io::Read;
+use std::path::Path;
 use std::env;
+use itertools::Itertools;
 
 extern crate version_check as rustc;
 
@@ -10,13 +15,7 @@ pub fn check_rosenvironment(env_var: &'static str) -> String {
         value
     } else {
         panic!(
-            "{} environment variable not set - please source ROS 2 installation first as follows: 
-
-            echo "source ~/ros2_ws/install/setup.sh" >> ~/.bashrc
-
-            source ~/.bashrc
-            
-            and restart terminal.",
+            "{} environment variable not set - please source ROS 2 installation first as follows",
 
             env_var
         );
@@ -42,3 +41,8 @@ pub fn print_cargo_watches() {
     println!("cargo:rerun-if-env-changed=IDL_PACKAGE_FILTER");
 }
 
+// create rust FFI bindings - Configure and generate Rust bindings for a C/C++ header.
+pub fn bindgenBuilder() -> bindgen::Builder {
+    // Configuration to generate bindings
+    let mut builder = bindgen::Builder::default().derive_copy(false)
+}
